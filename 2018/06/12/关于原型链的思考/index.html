@@ -4,24 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>firstBlog | qikke&#39;s blog</title>
+    <title>关于原型链的思考 | qikke&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="qikke">
     
 
     
-    <meta name="description" content="一直以来认为博客对我的意义不大，因为我比较喜欢做笔记，复习笔记，重构笔记这一套学习方法，再者也感觉写博客麻烦，一直无法克服自己的懒惰心理。  但是笔记始终是感觉是给自己看得，知识点非常的集中并且抽象，这导致自己的学习思维打不开，很封闭。而写博客能改变这种现象，想明白这个问题后，那肯定要写博客了，在进步的道路上不能有懒惰存在。">
+    <meta name="description" content="以下纯属个人的理解和思考，肯定会有理解有误的地方，如果有新的理解，我会及时修改，也希望大家能多多指正。 原型链存在的意义构造函数生成实例对象有个缺点：无法共享属性和方法，所以为了解决这个问题，js在构造函数中设置一个prototype属性，把需要实例对象共用的属性和方法放进去。 一张关于原型链的图片 理解这幅图的前提： Function、Object、Number、String 看似是数据类型，其">
 <meta property="og:type" content="article">
-<meta property="og:title" content="firstBlog">
-<meta property="og:url" content="http://yoursite.com/2018/05/06/firstBlog/index.html">
+<meta property="og:title" content="关于原型链的思考">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/关于原型链的思考/index.html">
 <meta property="og:site_name" content="qikke&#39;s blog">
-<meta property="og:description" content="一直以来认为博客对我的意义不大，因为我比较喜欢做笔记，复习笔记，重构笔记这一套学习方法，再者也感觉写博客麻烦，一直无法克服自己的懒惰心理。  但是笔记始终是感觉是给自己看得，知识点非常的集中并且抽象，这导致自己的学习思维打不开，很封闭。而写博客能改变这种现象，想明白这个问题后，那肯定要写博客了，在进步的道路上不能有懒惰存在。">
+<meta property="og:description" content="以下纯属个人的理解和思考，肯定会有理解有误的地方，如果有新的理解，我会及时修改，也希望大家能多多指正。 原型链存在的意义构造函数生成实例对象有个缺点：无法共享属性和方法，所以为了解决这个问题，js在构造函数中设置一个prototype属性，把需要实例对象共用的属性和方法放进去。 一张关于原型链的图片 理解这幅图的前提： Function、Object、Number、String 看似是数据类型，其">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-12T04:01:00.337Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/12/5b1f40cf5abf9.png">
+<meta property="og:updated_time" content="2018-06-12T03:59:52.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="firstBlog">
-<meta name="twitter:description" content="一直以来认为博客对我的意义不大，因为我比较喜欢做笔记，复习笔记，重构笔记这一套学习方法，再者也感觉写博客麻烦，一直无法克服自己的懒惰心理。  但是笔记始终是感觉是给自己看得，知识点非常的集中并且抽象，这导致自己的学习思维打不开，很封闭。而写博客能改变这种现象，想明白这个问题后，那肯定要写博客了，在进步的道路上不能有懒惰存在。">
+<meta name="twitter:title" content="关于原型链的思考">
+<meta name="twitter:description" content="以下纯属个人的理解和思考，肯定会有理解有误的地方，如果有新的理解，我会及时修改，也希望大家能多多指正。 原型链存在的意义构造函数生成实例对象有个缺点：无法共享属性和方法，所以为了解决这个问题，js在构造函数中设置一个prototype属性，把需要实例对象共用的属性和方法放进去。 一张关于原型链的图片 理解这幅图的前提： Function、Object、Number、String 看似是数据类型，其">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/12/5b1f40cf5abf9.png">
 
     
     <link rel="alternative" href="/atom.xml" title="qikke&#39;s blog" type="application/atom+xml">
@@ -81,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/05/06/firstBlog/" title="firstBlog" itemprop="url">firstBlog</a>
+      <a href="/2018/06/12/关于原型链的思考/" title="关于原型链的思考" itemprop="url">关于原型链的思考</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="qikke" target="_blank" itemprop="author">qikke</a>
 		
   <p class="article-time">
-    <time datetime="2018-05-06T09:03:01.000Z" itemprop="datePublished"> Published 2018-05-06</time>
+    <time datetime="2018-06-12T03:20:22.000Z" itemprop="datePublished"> Published 2018-06-12</time>
     
   </p>
 </header>
@@ -97,11 +99,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链存在的意义"><span class="toc-number">1.</span> <span class="toc-text">原型链存在的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一张关于原型链的图片"><span class="toc-number">2.</span> <span class="toc-text">一张关于原型链的图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解这幅图的前提："><span class="toc-number">2.1.</span> <span class="toc-text">理解这幅图的前提：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考的点："><span class="toc-number">2.2.</span> <span class="toc-text">思考的点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结：对象和函数的关系"><span class="toc-number">3.</span> <span class="toc-text">总结：对象和函数的关系</span></a></li></ol>
 		
 		</div>
 		
-		<p>  一直以来认为博客对我的意义不大，因为我比较喜欢做笔记，复习笔记，重构笔记这一套学习方法，再者也感觉写博客麻烦，一直无法克服自己的懒惰心理。<br>  但是笔记始终是感觉是给自己看得，知识点非常的集中并且抽象，这导致自己的学习思维打不开，很封闭。而写博客能改变这种现象，想明白这个问题后，那肯定要写博客了，在进步的道路上不能有懒惰存在。 </p>
+		<p>以下纯属个人的理解和思考，肯定会有理解有误的地方，如果有新的理解，我会及时修改，也希望大家能多多指正。</p>
+<h2 id="原型链存在的意义"><a href="#原型链存在的意义" class="headerlink" title="原型链存在的意义"></a>原型链存在的意义</h2><p>构造函数生成实例对象有个缺点：无法共享属性和方法，所以为了解决这个问题，js在构造函数中设置一个prototype属性，把需要实例对象共用的属性和方法放进去。</p>
+<h2 id="一张关于原型链的图片"><a href="#一张关于原型链的图片" class="headerlink" title="一张关于原型链的图片"></a>一张关于原型链的图片</h2><p><img src="https://i.loli.net/2018/06/12/5b1f40cf5abf9.png" alt="222.png"></p>
+<h3 id="理解这幅图的前提："><a href="#理解这幅图的前提：" class="headerlink" title="理解这幅图的前提："></a>理解这幅图的前提：</h3><ul>
+<li>Function、Object、Number、String 看似是数据类型，其实是构造函数。</li>
+<li>Foo是通过Function创造出来的一个函数。</li>
+<li>num是通过Number构造的一个数值。</li>
+<li>[[prototype]]是指向构造函数的原型对象的指针，可以通过<strong>proto</strong>属性访问。</li>
+<li>Prototype是原型对象，只有函数才有prototype属性。</li>
+<li>实例的[[prototype]]指向构造函数的prototype。</li>
+<li>子类的prototype是父类的实例。</li>
+</ul>
+<h3 id="思考的点："><a href="#思考的点：" class="headerlink" title="思考的点："></a>思考的点：</h3><ul>
+<li>所有函数（除了Object）的prototype都指向Object的prototype，也就是说所有函数都继承自Object（包括Function）。</li>
+<li>所有函数（包括Object）都是Function的实例，体现在[[prototype]]指向Function.prototype</li>
+<li>所以有意思的点是：Function继承自Object，而Object是Function的一个实例。</li>
+</ul>
+<h2 id="总结：对象和函数的关系"><a href="#总结：对象和函数的关系" class="headerlink" title="总结：对象和函数的关系"></a>总结：对象和函数的关系</h2><ul>
+<li>函数与对象之间，绝对不是一种包含和被包含的关系。</li>
+<li><p>“函数是对象”，这句话中的对象，绝对不是一个普通的对象。</p>
+</li>
+<li><p>所有函数继承自Object，可以认为函数是 Object 的“子类”。（这里的Object也可以读作“对象”，但是它不是我们经常使用的那种普通对象，它是一个构造函数）。</p>
+</li>
+<li>而我们平时用到的那些普通对象，是Object的实例。</li>
+<li>所以函数可以跟Object扯上关系，当最好不要跟普通对象扯上关系。</li>
+<li>函数的prototype是一个普通对象。</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -114,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2018/05/06/firstBlog/" data-title="firstBlog | qikke&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2018/06/12/关于原型链的思考/" data-title="关于原型链的思考 | qikke&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -127,19 +155,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/06/12/关于原型链的思考/" title="关于原型链的思考">
-  <strong>上一篇：</strong><br/>
-  <span>
-  关于原型链的思考</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/05/06/hello-world/"  title="Hello World">
+<a href="/2018/05/06/firstBlog/"  title="firstBlog">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>firstBlog
 </span>
 </a>
 </div>
@@ -156,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链存在的意义"><span class="toc-number">1.</span> <span class="toc-text">原型链存在的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一张关于原型链的图片"><span class="toc-number">2.</span> <span class="toc-text">一张关于原型链的图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解这幅图的前提："><span class="toc-number">2.1.</span> <span class="toc-text">理解这幅图的前提：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考的点："><span class="toc-number">2.2.</span> <span class="toc-text">思考的点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结：对象和函数的关系"><span class="toc-number">3.</span> <span class="toc-text">总结：对象和函数的关系</span></a></li></ol>
  
   </div>
 
