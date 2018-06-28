@@ -79,6 +79,123 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2018/06/28/移动端适配/" title="移动端适配" itemprop="url">移动端适配</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="qikke" target="_blank" itemprop="author">qikke</a>
+		
+  <p class="article-time">
+    <time datetime="2018-06-28T08:38:59.000Z" itemprop="datePublished"> Published 2018-06-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="关于meta-viewport"><a href="#关于meta-viewport" class="headerlink" title="关于meta viewport"></a>关于meta viewport</h2><ul>
+<li>css中的1px并不等于设备的1px</li>
+<li>显示器上的物理像素等于显示器的点距</li>
+<li>css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。<h2 id="关于像素"><a href="#关于像素" class="headerlink" title="关于像素"></a>关于像素</h2></li>
+<li>css中的1px并不等于设备的1px</li>
+<li>显示器上的物理像素等于显示器的点距</li>
+<li>css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。<h2 id="PPK的关于viewport的理论"><a href="#PPK的关于viewport的理论" class="headerlink" title="PPK的关于viewport的理论"></a>PPK的关于viewport的理论</h2></li>
+<li>两种viewport：layout viewport 和 visual viewport<br>![此处输入图片的描述][1]</li>
+<li>visual viewport可以类比为移动设备屏幕的大小范围，而layout viewport要大很多。</li>
+<li>移动设备上的浏览器大多都会把自己默认的layout viewport设为980px，用户的设备很小，这样带来的后果就是浏览器会出现横向滚动条。（这个layout viewport的宽度可以通过 document.documentElement.clientWidth 来获取）</li>
+<li>通过这个默认的layout viewport，所有pc的网页在手机上都可以浏览啦，只不过非常难用，用户要不断的滑动页面才能看到整个网页。</li>
+<li><p>很明显，这不是我们想要的移动端网页。所以，越来越多的网站都会为移动设备进行单独的设计，那怎么样设计移动设备的页面呢？</p>
+<h3 id="首先，第一步，准备工作。"><a href="#首先，第一步，准备工作。" class="headerlink" title="首先，第一步，准备工作。"></a>首先，第一步，准备工作。</h3><p>修改默认的layout viewport，告别乱划乱放大的浏览方式。</p>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</li>
+<li><p>content=”width=device-width： 让layout viewport等于设备的理想宽度</p>
+</li>
+<li><a href="http://viewportsizes.com可以查看各型号设备的理想宽度。" target="_blank" rel="noopener">http://viewportsizes.com可以查看各型号设备的理想宽度。</a></li>
+<li>user-scalable=no：禁止用户进行缩放</li>
+<li>initial-scale=1.0：设置页面的初始缩放值为1</li>
+<li>maximum-scale=1.0：允许用户的最大缩放值为1</li>
+<li>minimum-scale=1.0：允许用户的最小缩放值为1</li>
+<li>这个标签是移动端适配的前提，禁止浏览器缩放网页，也禁止用户缩放网页，为什么禁止呢，因为我们会给移动端写一个完美的展示效果，根本不需要缩放！<h3 id="第二步，如何实现移动端适配？"><a href="#第二步，如何实现移动端适配？" class="headerlink" title="第二步，如何实现移动端适配？"></a>第二步，如何实现移动端适配？</h3><h4 id="通过媒体查询的方式即CSS3的meida-queries"><a href="#通过媒体查询的方式即CSS3的meida-queries" class="headerlink" title="通过媒体查询的方式即CSS3的meida queries"></a>通过媒体查询的方式即CSS3的meida queries</h4></li>
+<li>它主要是通过查询设备的宽度来执行不同的 css 代码，最终达到界面的配置。核心语法是：</li>
+<li><p><code>@media screen and (max-width: 600px) { /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+/* css代码*/
+}</code></p>
+</li>
+<li><p>优点</p>
+</li>
+</ul>
+<ol>
+<li>media query可以做到设备像素比的判断，方法简单，成本低，特别是对移动和PC维护同一套代码的时候。</li>
+<li>图片便于修改，只需修改css文件</li>
+<li>调整屏幕宽度的时候不用刷新页面即可响应式展示</li>
+</ol>
+<ul>
+<li>缺点</li>
+</ul>
+<ol>
+<li>代码量比较大，维护不方便</li>
+<li>为了兼顾大屏幕或高清设备，会造成其他设备资源浪费，特别是加载图片资源</li>
+<li>为了兼顾移动端和PC端各自响应式的展示效果，难免会损失各自特有的交互方式</li>
+</ol>
+<h4 id="rem缩放"><a href="#rem缩放" class="headerlink" title="rem缩放"></a>rem缩放</h4><ul>
+<li>根据屏幕宽度设定 rem 值，需要适配的元素都使用 rem 为单位，不需要适配的元素还是使用 px 为单位。</li>
+<li><p>使用js动态调整rem</p>
+<p>  <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+&lt;script&gt;
+   var pageWidth = window.innerWidth
+   document.write(&#39;&lt;style&gt;html{font-size:&#39;+pageWidth/10+&#39;px;}&lt;/style&gt;&#39;)
+&lt;/script&gt;</code></p>
+</li>
+</ul>
+<ul>
+<li>在 scss 文件里添加，这个方法可实现 px 自动变 rem<br><code>@function px( $px ){
+@return $px/$designWidth*10 + rem;
+}
+$designWidth : 750;  
+.child{
+width: px(375);
+height: px(160);
+margin: px(40) px(40);
+border: 1px solid red;
+float: left;
+font-size: 1.2em;
+}</code></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2018/06/14/动手封装一个jQuery构造函数/" title="动手封装一个jQuery构造函数" itemprop="url">动手封装一个jQuery构造函数</a>
   </h1>
   <p class="article-author">By
