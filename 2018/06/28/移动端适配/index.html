@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="关于meta viewport css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素">
+    <meta name="description" content="关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于meta viewport 两种viewport：layout viewport 和 visual viewport visual viewport可以类比为移动设备屏幕的大小范围，而layout v">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端适配">
 <meta property="og:url" content="http://yoursite.com/2018/06/28/移动端适配/index.html">
 <meta property="og:site_name" content="qikke&#39;s blog">
-<meta property="og:description" content="关于meta viewport css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素">
+<meta property="og:description" content="关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于meta viewport 两种viewport：layout viewport 和 visual viewport visual viewport可以类比为移动设备屏幕的大小范围，而layout v">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2018/06/28/5b349c9b06a8e.jpg">
-<meta property="og:updated_time" content="2018-06-28T09:01:26.147Z">
+<meta property="og:updated_time" content="2018-06-28T09:12:32.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端适配">
-<meta name="twitter:description" content="关于meta viewport css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素">
+<meta name="twitter:description" content="关于像素 css中的1px并不等于设备的1px 显示器上的物理像素等于显示器的点距 css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。  关于meta viewport 两种viewport：layout viewport 和 visual viewport visual viewport可以类比为移动设备屏幕的大小范围，而layout v">
 <meta name="twitter:image" content="https://i.loli.net/2018/06/28/5b349c9b06a8e.jpg">
 
     
@@ -99,21 +99,16 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于meta-viewport"><span class="toc-number">1.</span> <span class="toc-text">关于meta viewport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于像素"><span class="toc-number">2.</span> <span class="toc-text">关于像素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PPK的关于viewport的理论"><span class="toc-number">3.</span> <span class="toc-text">PPK的关于viewport的理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首先，准备工作。"><span class="toc-number">4.</span> <span class="toc-text">首先，准备工作。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现移动端适配？"><span class="toc-number">5.</span> <span class="toc-text">如何实现移动端适配？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过媒体查询的方式即CSS3的meida-queries"><span class="toc-number">5.1.</span> <span class="toc-text">1. 通过媒体查询的方式即CSS3的meida queries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rem缩放"><span class="toc-number">5.2.</span> <span class="toc-text">2. rem缩放</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于像素"><span class="toc-number">1.</span> <span class="toc-text">关于像素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于meta-viewport"><span class="toc-number">2.</span> <span class="toc-text">关于meta viewport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首先，准备工作。"><span class="toc-number">3.</span> <span class="toc-text">首先，准备工作。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现移动端适配？"><span class="toc-number">4.</span> <span class="toc-text">如何实现移动端适配？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过媒体查询的方式即CSS3的meida-queries"><span class="toc-number">4.1.</span> <span class="toc-text">1. 通过媒体查询的方式即CSS3的meida queries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rem缩放"><span class="toc-number">4.2.</span> <span class="toc-text">2. rem缩放</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="关于meta-viewport"><a href="#关于meta-viewport" class="headerlink" title="关于meta viewport"></a>关于meta viewport</h2><ul>
+		<h2 id="关于像素"><a href="#关于像素" class="headerlink" title="关于像素"></a>关于像素</h2><ul>
 <li>css中的1px并不等于设备的1px</li>
 <li>显示器上的物理像素等于显示器的点距</li>
 <li>css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。</li>
 </ul>
-<h2 id="关于像素"><a href="#关于像素" class="headerlink" title="关于像素"></a>关于像素</h2><ul>
-<li>css中的1px并不等于设备的1px</li>
-<li>显示器上的物理像素等于显示器的点距</li>
-<li>css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。</li>
-</ul>
-<h2 id="PPK的关于viewport的理论"><a href="#PPK的关于viewport的理论" class="headerlink" title="PPK的关于viewport的理论"></a>PPK的关于viewport的理论</h2><ul>
+<h2 id="关于meta-viewport"><a href="#关于meta-viewport" class="headerlink" title="关于meta viewport"></a>关于meta viewport</h2><ul>
 <li>两种viewport：layout viewport 和 visual viewport<br><img src="https://i.loli.net/2018/06/28/5b349c9b06a8e.jpg" alt="两种viewport"></li>
 <li>visual viewport可以类比为移动设备屏幕的大小范围，而layout viewport要大很多。</li>
 <li>移动设备上的浏览器大多都会把自己默认的layout viewport设为980px，用户的设备很小，这样带来的后果就是浏览器会出现横向滚动条。（这个layout viewport的宽度可以通过 document.documentElement.clientWidth 来获取）</li>
@@ -207,7 +202,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于meta-viewport"><span class="toc-number">1.</span> <span class="toc-text">关于meta viewport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于像素"><span class="toc-number">2.</span> <span class="toc-text">关于像素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PPK的关于viewport的理论"><span class="toc-number">3.</span> <span class="toc-text">PPK的关于viewport的理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首先，准备工作。"><span class="toc-number">4.</span> <span class="toc-text">首先，准备工作。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现移动端适配？"><span class="toc-number">5.</span> <span class="toc-text">如何实现移动端适配？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过媒体查询的方式即CSS3的meida-queries"><span class="toc-number">5.1.</span> <span class="toc-text">1. 通过媒体查询的方式即CSS3的meida queries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rem缩放"><span class="toc-number">5.2.</span> <span class="toc-text">2. rem缩放</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于像素"><span class="toc-number">1.</span> <span class="toc-text">关于像素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于meta-viewport"><span class="toc-number">2.</span> <span class="toc-text">关于meta viewport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首先，准备工作。"><span class="toc-number">3.</span> <span class="toc-text">首先，准备工作。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现移动端适配？"><span class="toc-number">4.</span> <span class="toc-text">如何实现移动端适配？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过媒体查询的方式即CSS3的meida-queries"><span class="toc-number">4.1.</span> <span class="toc-text">1. 通过媒体查询的方式即CSS3的meida queries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rem缩放"><span class="toc-number">4.2.</span> <span class="toc-text">2. rem缩放</span></a></li></ol></li></ol>
  
   </div>
 
