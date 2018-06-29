@@ -79,6 +79,67 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2018/06/29/闭包/" title="简述闭包" itemprop="url">简述闭包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="qikke" target="_blank" itemprop="author">qikke</a>
+		
+  <p class="article-time">
+    <time datetime="2018-06-29T03:03:50.000Z" itemprop="datePublished"> Published 2018-06-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>”函数“ 和 ”函数内部能访问到的变量“的总和，就是一个闭包。</p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>函数内部可以使用函数外部的变量，那函数外部怎样使用函数内部的变量呢？<br>闭包的最大用处是可以</p>
+<ul>
+<li><strong><em>读取隐藏在函数内部的变量</em></strong></li>
+<li><strong><em>读取的过程也会让这些变量始终保持在内存里，不会被回收</em></strong>。</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">  var local = 1</span><br><span class="line">  function bar()&#123;</span><br><span class="line">    local++</span><br><span class="line">    return local</span><br><span class="line">  &#125;</span><br><span class="line">  return bar</span><br><span class="line">&#125;</span><br><span class="line">var func = foo()</span><br><span class="line">func()</span><br></pre></td></tr></table></figure>
+<hr>
+<p>local 变量和 bar 函数就组成了一个闭包（Closure）。<br>retrun bar就是使用了这个闭包，达到了访问隐藏变量的效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function createIncrementor(start)&#123;</span><br><span class="line">  return function()&#123;</span><br><span class="line">    return start++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var inc = createIncrementor(5)</span><br><span class="line">inc()	//5</span><br><span class="line">inc() //6</span><br><span class="line">inc() //7</span><br></pre></td></tr></table></figure>
+<p>function和start形成了一个闭包<br>return了这个function使用了闭包，可以让start一直存活在内存中。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>函数和变量形成一个闭包，return这个函数就使用了它。<br>闭包是 JS 函数作用域的副产品，它的作用大于概念。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2018/06/28/移动端适配/" title="移动端适配" itemprop="url">移动端适配</a>
   </h1>
   <p class="article-author">By
